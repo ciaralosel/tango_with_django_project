@@ -65,7 +65,7 @@ def add_category(request):
 			#Save new category to database
 			form.save(commit=True)
 			#Now category is saved we could confirm this, but for now just redirect user back to index view
-			return redirect('/rango/')
+			return redirect(reverse('rango:index'))
 		else:
 			#Supplied form contained errors so print them to terminal
 			print(form.errors)
@@ -82,7 +82,7 @@ def add_page(request, category_name_slug):
 
 	#Can't add page to category that doesn't exist
 	if category is None:
-		return redirect('/rango/')
+		return redirect(reverse('rango:index'))
 
 	form = PageForm()
 	
